@@ -1,13 +1,17 @@
-int main()
-{
-    int x=0;
-    int n=1000;
-    int z=500;
-    while(x<n){
-        if(z>x)
-            x++;
-        else
-            z++;
+// Source: Sumit Gulwani, Nebosja Jojic: "Program Verification as
+// Probabilistic Inference", POPL 2007.
+
+int main() {
+    int x = 0;
+    int m = 0;
+    int n = nondet_int();
+    while(x < n) {
+        if(nondet_int()) {
+            m = x;
+        }
+        x = x + 1;
     }
-    assert(z==x);
+    assert((m >= 0 || n <= 0));
+    assert((m < n || n <= 0));
+    return 0;
 }
