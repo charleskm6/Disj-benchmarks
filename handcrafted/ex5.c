@@ -16,7 +16,7 @@ int main()
         else if (y>=5)
         {
             y+=5;
-        }        
+        }
     }
     assert(y==5);
     return 0;
